@@ -1,0 +1,19 @@
+package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity;
+
+public enum BookGenre {
+    GENRE_FANTASY,
+    GENRE_SCIENCE_FICTION,
+    GENRE_MYSTERY,
+    GENRE_THRILLER,
+    GENRE_ROMANCE,
+    GENRE_HISTORICAL_FICTION,
+    GENRE_YOUNG_ADULT,
+    GENRE_CHILDRENS_LITERATURE,
+    GENRE_HORROR,
+    GENRE_LITERARY_FICTION,
+    GENRE_NON_FICTION,
+    GENRE_BIOGRAPHY,
+    GENRE_SELF_HELP,
+    GENRE_POETRY,
+    GENRE_GRAPHIC_NOVEL
+}
