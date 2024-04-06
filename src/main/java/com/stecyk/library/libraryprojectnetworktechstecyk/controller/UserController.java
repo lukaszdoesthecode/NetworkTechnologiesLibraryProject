@@ -2,6 +2,7 @@ package com.stecyk.library.libraryprojectnetworktechstecyk.controller;
 
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.UserEntity;
 import com.stecyk.library.libraryprojectnetworktechstecyk.service.UserService;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-// @PreAuthorize("hasRole('ROLE_W')")
+@PreAuthorize("isAuthenticated()")
 public class UserController {
     private final UserService userService;
 

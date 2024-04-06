@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+//TODO MAKE USER TO GET ONLY THEIR LOAN
+//TODO MAKE THE WORKER TO GET ALL POSSIBLE LOANS
 @RestController
 @RequestMapping("/api/loans")
-@PreAuthorize("hasRole('ROLE_W')")
+@PreAuthorize("hasAnyRole('ROLE_W', 'ROLE_U')")
 public class LoanController {
     private final LoanService loanService;
 
