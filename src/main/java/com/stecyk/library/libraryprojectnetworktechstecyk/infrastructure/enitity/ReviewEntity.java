@@ -1,7 +1,7 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity;
 
+import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.Enums.Rates;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -84,7 +84,7 @@ public class ReviewEntity {
 
     @Basic
     @Column(name = "comment")
-    @Schema(description = "Review comment", example = "Great book!")
+    @Schema(description = "Review comment", example = "GOOD")
     private String comment;
 
     @Basic

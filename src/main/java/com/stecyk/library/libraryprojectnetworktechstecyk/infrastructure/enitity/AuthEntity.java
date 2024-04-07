@@ -1,5 +1,6 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity;
 
+import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.Enums.UserRole;
 import jakarta.persistence.*;
 
 @Entity

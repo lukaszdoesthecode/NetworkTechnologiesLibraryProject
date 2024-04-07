@@ -1,4 +1,4 @@
-package com.stecyk.library.libraryprojectnetworktechstecyk.controller.SecurityController;
+package com.stecyk.library.libraryprojectnetworktechstecyk.controller.SecurityController.DTOs;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
