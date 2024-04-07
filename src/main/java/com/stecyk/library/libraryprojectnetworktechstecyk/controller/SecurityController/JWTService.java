@@ -1,7 +1,7 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.controller.SecurityController;
 
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.AuthEntity;
-import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.UserRole;
+import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.Enums.UserRole;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;

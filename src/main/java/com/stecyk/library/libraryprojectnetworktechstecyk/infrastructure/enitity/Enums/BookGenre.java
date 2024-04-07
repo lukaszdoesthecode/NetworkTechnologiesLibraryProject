@@ -1,4 +1,4 @@
-package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity;
+package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.Enums;
 
 public enum BookGenre {
     GENRE_FANTASY,
