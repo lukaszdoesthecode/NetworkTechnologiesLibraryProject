@@ -4,6 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 public class WrongPasswordError extends RuntimeException{
+    /**
+     * Class representing error when password is wrong.
+     */
     private WrongPasswordError(String message){
         super(message);
     }

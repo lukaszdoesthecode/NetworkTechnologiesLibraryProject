@@ -1,6 +1,9 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
 
@@ -10,14 +13,19 @@ public class ReviewEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "review_id")
+    @Schema(description = "Review id", example = "1")
     private long review_id;
 
     @ManyToOne
     @JoinColumn(name = "book_id", referencedColumnName = "id")
+    @Schema(description = "Book id", example = "1")
+    @NotBlank(message = "Book id is mandatory")
     private BookEntity book_id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @Schema(description = "User id", example = "1")
+    @NotBlank(message = "User id is mandatory")
     private UserEntity user_id;
 
     public long getReview_id() {
@@ -70,13 +78,18 @@ public class ReviewEntity {
 
     @Basic
     @Column (name = "rate")
+    @Schema(description = "Review rate", example = "5 out of 10")
+    @NotBlank(message = "Rate is mandatory")
     private Rates rate;
 
     @Basic
     @Column(name = "comment")
+    @Schema(description = "Review comment", example = "Great book!")
     private String comment;
 
     @Basic
     @Column (name = "review_date")
+    @Schema(description = "Review date", example = "2021-12-01")
+    @NotBlank(message = "Review date is mandatory")
     private Date review_date;
 }

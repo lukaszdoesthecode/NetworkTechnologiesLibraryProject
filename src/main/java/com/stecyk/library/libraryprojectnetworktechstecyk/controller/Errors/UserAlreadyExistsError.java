@@ -6,6 +6,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 public class UserAlreadyExistsError extends RuntimeException {
+    /**
+     * Class representing error when user with this username already exists.
+     */
     private UserAlreadyExistsError(String message){
         super(message);
     }

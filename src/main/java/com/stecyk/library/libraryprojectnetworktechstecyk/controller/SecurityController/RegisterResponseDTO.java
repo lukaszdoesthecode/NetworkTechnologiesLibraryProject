@@ -1,10 +1,17 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.controller.SecurityController;
 
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.UserRole;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 
 public class RegisterResponseDTO {
+    @Schema(description = "User ID", example = "1")
     private long userID;
+    @Schema(description = "Username", example = "username")
+    @NotBlank(message = "Username is mandatory in DTO")
     private String username;
+    @Schema(description = "Role", example = "ROLE_U")
+    @NotBlank(message = "Role is mandatory")
     private UserRole role;
 
 

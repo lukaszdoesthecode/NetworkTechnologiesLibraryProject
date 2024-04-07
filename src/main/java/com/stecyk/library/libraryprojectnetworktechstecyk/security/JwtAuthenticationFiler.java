@@ -20,6 +20,9 @@ import java.util.List;
 
 @Component
 public class JwtAuthenticationFiler extends OncePerRequestFilter {
+    /**
+     * Filter to authenticate user by JWT token.
+     */
     private final JWTService jwtService;
 
     @Autowired

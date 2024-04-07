@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 @Table(name= "auth", schema = "library")
 public class AuthEntity {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "userId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    private long userId;
 
     @Basic
     @Column (name = "username", unique = true, nullable = false)
@@ -22,12 +22,12 @@ public class AuthEntity {
     @Column (name = "user_role", nullable = false)
     private UserRole role;
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long user_id) {
+        this.userId = user_id;
     }
 
     public String getUsername() {

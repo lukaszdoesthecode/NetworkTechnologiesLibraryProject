@@ -1,8 +1,11 @@
 package com.stecyk.library.libraryprojectnetworktechstecyk.service;
 
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.LoanEntity;
+import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.UserEntity;
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +30,11 @@ public class LoanService {
     public LoanEntity create(LoanEntity loan){
         return loanRepository.save(loan);
     }
+
+    public List<LoanEntity> getAllLoansForUser(long userId){
+        return loanRepository.findByUserId(userId);
+    }
+
 
     public void delete(long id){
         if(!loanRepository.existsById(id)){

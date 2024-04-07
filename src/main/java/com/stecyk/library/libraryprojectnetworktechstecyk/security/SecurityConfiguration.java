@@ -18,6 +18,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfiguration {
+    /**
+     * Configuration of security.
+     */
     private  final JwtAuthenticationFiler jwtAuthenticationFiler;
 
     @Autowired
