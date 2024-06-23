@@ -2,8 +2,8 @@ package com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.reposi
 
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.List;
+
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
 }

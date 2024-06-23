@@ -21,7 +21,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/loans")
-@PreAuthorize("hasAnyRole('ROLE_W', 'ROLE_U')")
 @Tag(name = "Loan", description = "Loan")
 public class LoanController {
     private final LoanService loanService;
@@ -34,8 +33,8 @@ public class LoanController {
     }
 
     @GetMapping("/allLoans")
-    @PreAuthorize("hasRole('ROLE_W')")
-    @SecurityRequirements
+    //@PreAuthorize("hasRole('ROLE_W')")
+    //@SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All loans returned"),
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
@@ -67,7 +66,6 @@ public class LoanController {
 
 
     @GetMapping("/myLoans")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All loans of current user returned"),
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)

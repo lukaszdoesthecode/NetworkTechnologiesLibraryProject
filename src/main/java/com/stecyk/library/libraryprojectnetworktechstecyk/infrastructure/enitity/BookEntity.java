@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 @Table(name = "books", schema = "library")
 public class BookEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id")
     @Schema(description = "Book id", example = "1")
@@ -26,27 +26,30 @@ public class BookEntity {
     private String title;
 
     @Basic
-    @Column (name = "author")
+    @Column(name = "author")
     @Schema(description = "Book author", example = "John Doe")
     @NotBlank(message = "Author is mandatory")
     private String author;
 
     @Basic
-    @Column (name = "publisher")
+    @Column(name = "publisher")
     @Schema(description = "Book publisher", example = "Publisher")
     @NotBlank(message = "Publisher is mandatory")
     private String publisher;
 
     @Basic
-    @Column (name = "publication_year")
+    @Column(name = "publication_year")
     @Schema(description = "Book publication year", example = "2021")
-    @NotBlank(message = "Publication year is mandatory")
     private int publication_year;
 
     @Basic
-    @Column (name = "available_copies")
+    @Column(name = "available_copies")
     @Schema(description = "Book available copies", example = "5")
     private int available_copies;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private UserEntity user;
 
     public long getId() {
         return id;
@@ -102,5 +105,13 @@ public class BookEntity {
 
     public void setAvailable_copies(int available_copies) {
         this.available_copies = available_copies;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

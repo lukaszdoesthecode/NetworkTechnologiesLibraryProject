@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/bookDetails")
-@PreAuthorize("isAuthenticated()")
 @Tag(name = "Book-Details", description = "Operations about book details")
 public class BookDetailsController {
     private final BookDetailsService bookDetailsService;
@@ -27,7 +26,6 @@ public class BookDetailsController {
     }
 
     @GetMapping("/allDetails")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found all book details"),
             @ApiResponse(responseCode = "404", description = "Book details not found"),
@@ -58,8 +56,6 @@ public class BookDetailsController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_W')")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created book details"),
             @ApiResponse(responseCode = "400", description = "Bad request"),
@@ -76,8 +72,6 @@ public class BookDetailsController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_W')")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Book details deleted"),
             @ApiResponse(responseCode = "404", description = "Book details not found"),

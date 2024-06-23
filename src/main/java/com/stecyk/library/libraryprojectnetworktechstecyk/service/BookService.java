@@ -16,20 +16,23 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<BookEntity> getAll(){
+    public List<BookEntity> getAll() {
         return bookRepository.findAll();
     }
-    public BookEntity getOne(long id){
+
+    public BookEntity getOne(long id) {
         return bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
     }
-    public BookEntity create(BookEntity book){
+
+    public BookEntity create(BookEntity book) {
         return bookRepository.save(book);
     }
 
-    public void delete(long id){
-        if(!bookRepository.existsById(id)){
-            throw new RuntimeException();
+    public void delete(long id) {
+        if (!bookRepository.existsById(id)) {
+            throw new RuntimeException("Book not found");
         }
         bookRepository.deleteById(id);
     }
+
 }

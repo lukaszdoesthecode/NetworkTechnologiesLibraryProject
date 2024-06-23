@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name = "users", schema = "library")
 public class UserEntity {
     @Id
-    @Column (name = "user_id")
+    @Column(name = "user_id")
     @Schema(description = "User id", example = "1")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long user_id;
@@ -17,35 +17,23 @@ public class UserEntity {
     @Basic
     @NotBlank(message = "Email is mandatory")
     @Schema(description = "User email", example = "mail@example.com")
-    @Column (name = "email")
+    @Column(name = "email")
     private String email;
 
     @Basic
     @NotBlank(message = "Name is mandatory")
     @Schema(description = "User name", example = "John Doe")
-    @Column (name = "name")
+    @Column(name = "name")
     private String name;
 
     @Enumerated(EnumType.STRING)
     @Schema(description = "User role", example = "ROLE_U/ROLE_W")
     @NotBlank(message = "User type is mandatory")
-    @Column (name = "user_type")
+    @Column(name = "user_type")
     private UserRole userRole;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private AuthEntity auth;
-
-    @OneToOne
-    @JoinColumn(name = "book_id", referencedColumnName = "id")
-    private BookEntity id;
-
-    public BookEntity getId() {
-        return id;
-    }
-
-    public void setId(BookEntity id) {
-        this.id = id;
-    }
 
     public long getUser_id() {
         return user_id;
@@ -54,7 +42,6 @@ public class UserEntity {
     public void setUser_id(long user_id) {
         this.user_id = user_id;
     }
-
 
     public String getEmail() {
         return email;
@@ -70,5 +57,13 @@ public class UserEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 }

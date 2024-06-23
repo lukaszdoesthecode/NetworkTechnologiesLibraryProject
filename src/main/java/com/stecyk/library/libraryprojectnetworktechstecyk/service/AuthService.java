@@ -12,7 +12,6 @@ import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.enitity
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.repository.AuthRepository;
 import com.stecyk.library.libraryprojectnetworktechstecyk.infrastructure.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +23,14 @@ public class AuthService {
     private final UserRepository userRepository;
     private final JWTService jwtService;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
 
 
     @Autowired
-    public AuthService(AuthRepository authRepository, UserRepository userRepository, JWTService jwtService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    public AuthService(AuthRepository authRepository, UserRepository userRepository, JWTService jwtService, PasswordEncoder passwordEncoder) {
         this.authRepository = authRepository;
         this.userRepository = userRepository;
         this.jwtService = jwtService;
         this.passwordEncoder = passwordEncoder;
-        this.authenticationManager = authenticationManager;
     }
 
     public RegisterResponseDTO register(RegisterDTO dto) {
@@ -62,9 +59,10 @@ public class AuthService {
     public LoginResponseDTO login(LoginDTO dto){
         AuthEntity authEntity = authRepository.findByUsername(dto.getUsername()).orElseThrow(RuntimeException::new);
 
-        if (!authEntity.getPassword().matches(passwordEncoder.encode(dto.getPassword()))){
+        if(!passwordEncoder.matches(dto.getPassword(),authEntity.getPassword())){
             throw WrongPasswordError.create();
         }
+
         String token = jwtService.generateToken(authEntity);
 
 

@@ -18,7 +18,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reviews")
-@PreAuthorize("isAuthenticated()")
 @Tag(name = "Review", description = "Review data represented in the system")
 public class ReviewController {
     private final ReviewService reviewService;
@@ -30,7 +29,6 @@ public class ReviewController {
     }
 
     @GetMapping("/allBooks")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "All reviews returned"),
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
@@ -44,7 +42,6 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Review returned"),
             @ApiResponse(responseCode = "404", description = "Review not found", content = @Content),
@@ -60,8 +57,6 @@ public class ReviewController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ROLE_W')")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Review created"),
             @ApiResponse(responseCode = "400", description = "Creation failed", content = @Content),
@@ -78,13 +73,13 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_W')")
-    @SecurityRequirements
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Review deleted"),
             @ApiResponse(responseCode = "404", description = "Review not found", content = @Content),
             @ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content)
     })
+
+
     public void delete(@PathVariable long id){
         /**
          * Method to delete review by id.
